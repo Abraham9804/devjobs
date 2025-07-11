@@ -16,6 +16,17 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+         <!-- Rol -->
+        <div class="mt-4">
+            <x-input-label for="rol" :value="__('Rol')" />
+            <select class="w-full" id="rol" name="rol">
+                <option value="">-- Elige tu rol --</option>
+                <option value="1">Reclutador - publicar vacante</option>
+                <option value="2">Desarrollador - aplicar a vacante</option>
+            </select>
+            <x-input-error :messages="$errors->get('rol')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Contraseña')" />
