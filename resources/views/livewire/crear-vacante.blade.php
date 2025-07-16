@@ -1,18 +1,26 @@
 <form class="md:w-1/2 space-y-5">
     <div>
         <x-input-label for="titulo" :value="__('Titulo vacante')" />
-        <x-text-input id="titulo" class="block mt-1 w-full" type="text" name="titulo" :value="old('titulo')" placeholder="Titulo vacante"/>
+        <x-text-input id="titulo" wire:model.live="titulo" class="block mt-1 w-full" type="text" :value="old('titulo')" placeholder="Titulo vacante"/>
         <x-input-error :messages="$errors->get('titulo')" class="mt-2" />
     </div>
     <div>
         <x-input-label for="sueldo" :value="__('Sueldo mensual')" />
-        <select id="sueldo" class="block mt-1 w-full" name="titulo"/>
+        <select id="sueldo" class="block mt-1 w-full" wire:model.live="sueldo"/>
+            <option>== Elija el salario --</option>
+            @foreach ($salarios as $salario)
+                <option value={{$salario->id}}>{{$salario->salario}}</option>
+            @endforeach
         </select>
         <x-input-error :messages="$errors->get('sueldo')" class="mt-2" />
     </div>
     <div>
         <x-input-label for="categoria" :value="__('Categoria')" />
-        <select id="categoria" class="block mt-1 w-full" name="categoria"/>
+        <select id="categoria" class="block mt-1 w-full" wire:model.live="categoria"/>
+            <option>== Elija la categoria --</option>
+            @foreach ($categorias as $categoria)
+                <option value={{$categoria->id}}>{{$categoria->categoria}}</option>
+            @endforeach
         </select>
         <x-input-error :messages="$errors->get('categoria')" class="mt-2" />
     </div>
